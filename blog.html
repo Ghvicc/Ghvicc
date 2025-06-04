@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhViƆɔ</title>
+    <link rel="icon" type="image/png" href="imgs/logo.png">
+    <!-- Main Templet CSS File  -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" class="js-color-style" href="css/colors/color-2.css" />
+    <!-- Render All Elements Normally  -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <!-- font awsome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/button.css" />
+    <style>
+         :root {
+            --bg-color: #F6E0BC;
+            --text-color: #000000;
+            --title-color: #72797e;
+        }
+        
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #72797e;
+            --title-color: #72797e;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .header {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        /* Hide hidden content by default */
+        
+        .hidden-content {
+            display: none;
+            width: 100%;
+            /* Make it full width */
+            text-align: justify;
+            /* Make text look cleaner */
+            padding: 10px;
+            /* Add some spacing */
+        }
+        
+        .blog-info {
+            width: 100%;
+            /* Ensure the whole section expands */
+        }
+        
+        .read-more {
+            display: block;
+            text-align: center;
+            /* Center the "Read More" button */
+        }
+        /* Slideshow Container */
+        
+        .slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 1500px;
+    height: auto; /* Adjust height to be auto so it scales with width */
+    aspect-ratio: 16 / 9; /* Optional: maintains a 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+        
+        /* .slideshow-container {
+            position: relative;
+            width: 100%;
+            max-width: 1500px;
+            height: 850px;
+            overflow: hidden;
+        }
+         */
+        .blog-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            /*transition: opacity 1s ease-in-out;*/
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            cursor: pointer;
+            /* Add pointer to indicate clickable images */
+        }
+        
+        .blog-post.expanded .blog-img {
+            transform: translateX(-50%);
+            /* Move images to the left */
+            opacity: 0;
+            /* Hide them smoothly */
+        }
+        
+        .blog-post.expanded .hidden-content {
+            width: 100%;
+            /* Ensure text takes full space */
+        }
+        /* Ensure first image is visible */
+        
+        .blog-img:first-child {
+            opacity: 1;
+        }
+        
+        .blog-post {
+            display: flex;
+            align-items: center;
+            /*background-color: #F6E0BC;*/
+            /* Keep everything aligned properly */
+            transition: all 0.5s ease-in-out;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .blog-post {
+                flex-direction: column;
+                /* Stack everything */
+                align-items: center;
+                text-align: center;
+            }
+            .blog-img {
+                width: 100%;
+                max-width: 400px;
+                transition: opacity 1s ease-in-out;
+            }
+            .hidden-content {
+                width: 100%;
+            }
+            .read-more {
+                display: block;
+                margin: 10px auto;
+            }
+            .image-slider {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .lightbox {
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        /* Lightbox Styling */
+        
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .lightbox.show {
+            display: flex;
+        }
+        
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+        /* Default Light Mode Styles */
+        
+        .blog-post.grid {
+            background: #F6E0BC;
+            /* Light mode background */
+            color: #000000;
+            /* Light mode text color */
+            transition: background 0.3s, color 0.3s;
+        }
+        /* Dark Mode Styles */
+        
+        .dark-mode .blog-post.grid {
+            background: #222222;
+            /* Dark mode background */
+            color: #ffffff;
+            /* Dark mode text color */
+        }
+        /* Ensure links and buttons are visible in dark mode */
+        
+        .dark-mode .read-more {
+            color: #00bcd4;
+            /* Light blue for contrast */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <img src="imgs/logo.png" class="gh" alt="" style="height: 55px;width: 55px; border-radius: 50%;">
+                <p> GhViƆɔ</p>
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-items" id="nav-items">
+                    <li class="item"><a class="nav-link " href="index.html">Home</a></li>
+                    <li class="item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="item"><a class="nav-link active-link" href="blog.html">Mindful Life</a></li>
+                    <li class="item"><a class="nav-link" href="faq.html">Live It</a></li>
+                    <li class="item"><a class="nav-link" href="activities.html">Make an Impact</a></li>
+                    <li class="item"><a class="nav-link" href="shop.html"> Explore Collection</a></li>
+                    <li class="item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <!-- <li class="item" id="theme-toggle"><a class="nav-link" href="">Mode</a></li> -->
+                    <!-- <button id="theme-toggle" style="background-color: transparent;">Mode </button> -->
+                    <!-- <button id="theme-toggle" style="background-color: transparent;">Mode </button> -->
+                </ul>
+            </div>
+            <div class="nav-btns">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                  </label>
+                <div class="login-toggle" id="login-toggle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="cart-shop" id="cart-shop">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i id="icon-toggel" class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- #################### CART #################### -->
+    <div class="cart" id="cart">
+        <i class="fas fa-times cart-close" id="cart-close"></i>
+        <h2 class="cart-title">My Cart</h2>
+        <div class="cart-container">
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/h.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Cardigan Hoodie</h3>
+                    <span class="cart-price">$15</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/Jacket2.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Windbreak Hoodie</h3>
+                    <span class="cart-price">$15</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/short.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Short Jeans</h3>
+                    <span class="cart-price">$11</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="cart-prices">
+            <div class="cart-prices-item">3 Items</div>
+            <span class="cart-prices-total">$41</span>
+        </div>
+    </div>
+
+
+    <!-- ################## END CART ################## -->
+
+    <!-- ################# START LOGIN ################ -->
+
+    <div class="login" id="login">
+        <i class="fas fa-times login-close" id="login-close"></i>
+        <h2 class="login-title">LOGIN</h2>
+        <form action="" class="login-form grid">
+            <!-- EMAIL -->
+            <div class="login-content">
+                <label class="login-label" for="">Email</label>
+                <input type="email" class="login-input" id="e-mail">
+            </div>
+            <!-- PASSWORD -->
+            <div class="login-content">
+                <label class="login-label" for="">Password</label>
+                <input type="password" class="login-input" id="pass">
+            </div>
+            <!-- BUTTON -->
+            <div>
+                <a class="login-btn button" href="">Sign In</a>
+            </div>
+            <div>
+                <p class="signup">Not a member?
+                    <a href="regisration.html">SignUp</a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <!-- ################## END LOGIN ################# -->
+
+
+
+
+    <!-- ################## Start Shop ################# -->
+    <div class="main">
+        <section class="blog section container">
+            <div class="slideshow-container">
+                <img class="blog-img" src="img/1.jpg" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/2.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/3.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/4.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/5.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/6.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/7.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/8.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/9.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/10.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/11.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/12.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/13.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/14.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/15.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/16.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/17.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/18.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/19.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/20.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/21.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/22.JPG" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/23.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/24.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/ibra.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/27.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/28.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/29.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/30.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/31.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/32.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/33.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/34.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/35.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/36.png" alt="" onclick="openLightbox(this)">
+                <img class="blog-img" src="img/37.JPG" alt="" onclick="openLightbox(this)">
+            </div>
+            <div class="blog-post grid">
+                <!-- <div class="slideshow-container">
+                    <img class="blog-img" src="img/1.jpg" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/2.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/3.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/4.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/5.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/6.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/7.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/8.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/9.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/10.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/11.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/12.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/13.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/14.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/15.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/16.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/17.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/18.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/19.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/20.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/21.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/22.JPG" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/23.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/24.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/ibra.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/27.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/28.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/29.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/30.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/31.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/32.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/33.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/34.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/35.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/36.png" alt="" onclick="openLightbox(this)">
+                    <img class="blog-img" src="img/37.JPG" alt="" onclick="openLightbox(this)">
+                </div> -->
+
+                <div class="blog-info">
+                    <p class="up-info">TIMES LIKE THIS</p>
+                    <h3 class="up-info">Goal Fest at Arena One: MSL's Dominance Shines in 10-5 Thriller!</h3>
+                    <p class="info-discription">By Admin / February 9 <sup>th</sup>, 2025/</p>
+
+                    <div class="hidden-content" style="display: none;">
+                        <p>
+                            On game days, the team embraces a mindset that mirrors our own aproach to a simple lifestyle. They prioritize a clear mental state, free from the noise of unnecessary distractions. Instead of overloading with complex plays or mind games, they rely on
+                            the basics-strong defense, efficient passing, and team work. Similarly, our lifestyle brand encourages redusing mental clutter and focusing on what truly matters. Whether it's through simplifying your wadrobe, redusing
+                            your digital distractions, or prioritizing quality moments with loved ones, we believe that cutting out the excess allows you to bring your best self to the field-both in sport and life.</p>
+                    </div>
+
+                    <div class=" more">
+                        <a class="read-more" href="javascript:void(0);" onclick="toggleReadMore(this)">
+                            Read More
+                            <i class="fas fa-arrow-right button-icon"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lightbox Container -->
+            <!-- <div id="lightbox " class="lightbox ">
+                <span class="close " onclick="closeLightbox() ">&times;</span>
+                <img class="lightbox-content " id="lightbox-img ">
+            </div> -->
+            <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+                <img class="lightbox-img" id="lightbox-img" alt="Expanded Image">
+            </div>
+            <!-- <h2 class="bearcrumb-title">Blog Page</h2> -->
+            <!-- <h3 class="bearcrumb-subtitle">Home > <span class="main-color">Blog</span> </h3> -->
+            <div class="blog-container grid">
+                <!-- <div class="blog-post grid">
+                    <img class="blog-img" src="img/MSL.JPG" alt="" onclick="openLightbox(this)">
+                    <div class="blog-info">
+                        <p class="up-info">We are your number one jersey sponsor in the local teams</p>
+                        <h3 class="info-title">Our First Appearance </h3>
+                        <p class="info-discription">By Admin / February 9 <sup>th</sup>, 2025/</p>
+                        <div class="hidden-content">
+                            <p>
+                                MSL put on a dominant display at <b>Arena One</b> on <b>February 9, 2025</b>, thrashing <b>Maps United 10-5</b> in a thrilling goal fest. <b>Rodgers stole the show with a hat-trick</b>, while <b>Eugene bagged a brace</b>                                to keep the scoreboard ticking. <b>Lawrence, aka Maresca, also found the net</b>, with <b>Arnold, Silvena, and Ronny making their presence felt</b> in MSL’s relentless attack. Between the posts, <b>Victor and Micky shared goalkeeping duties</b>,
+                                facing waves of pressure but standing firm when it mattered. Despite Maps United’s spirited fightback, MSL’s firepower proved too much, sealing a commanding victory in style.
+                            </p>
+                        </div> -->
+
+                <!-- <div class="more">
+                            <a class="read-more" href="">
+                                Read More
+                                <i class="fas fa-arrow-right button-icon"></i>
+                            </a>
+                        </div> -->
+                <!-- <div class="more">
+                    <a class="read-more" href="javascript:void(0);" onclick="toggleReadMore(this)">
+                                Read More
+                                <i class="fas fa-arrow-right button-icon"></i>
+                            </a>
+                </div>
+            </div>
+
+    </div> -->
+                <!-- Lightbox Container -->
+                <!-- <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                    <img id="lightbox-img" class="lightbox-img">
+                </div> -->
+                
+
+                <!-- <div class="blog-post grid" style="visibility: hidden;">
+                    <img class="blog-img" src="img/ghvicc.JPG" alt=" " onclick="openLightbox(this) ">
+                    <div class="blog-info ">
+                        <p class="up-info ">The Story Behind</p>
+                        <h3 class="info-title ">Your Number one Slick Artists</h3>
+                        <p class="info-discription ">By Admin / February 9
+                            <sup>th</sup>, 2025 /</p>
+                        <div class="hidden-content ">
+                            <p>
+                                GhViƆɔ is the epitome of luxury, blending sophistication with a bold, modern edge. Every detail of the brand exudes class and exclusivity, from its sleek designs to its premium craftsmanship. Whether it's fashion, accessories, or lifestyle essentials,
+                                GhViƆɔ stands as a symbol of elegance, catering to those who appreciate refined aesthetics and high-end quality. With a perfect fusion of contemporary style and timeless appeal, GhViƆɔ is not just a brand—it’s a statement
+                                of prestige and finesse. </p>
+                        </div>
+
+                        <div class="more ">
+                            <a class="read-more " href="javascript:void(0); " onclick="toggleReadMore(this) ">
+                                    Read More
+                                    <i class="fas fa-arrow-right button-icon "></i>
+                                </a>
+                        </div>
+                    </div>
+
+                </div> -->
+                <!-- Lightbox Container -->
+                <!-- <div id="lightbox " class="lightbox " onclick="closeLightbox() ">
+                    <img id="lightbox-img " class="lightbox-img ">
+                </div> -->
+                <!-- <div class="blog-post grid ">
+                    <img class="blog-img " src="img/maps.jpg " alt=" ">
+                    <div class="blog-info ">
+                        <p class="up-info ">More like Friends</p>
+                        <h3 class="info-title ">The Rivals</h3>
+
+                        <p class="info-discription ">By Admin / February 9
+                            <sup>th</sup>, 2025 /</p>
+                        <div class="hidden-content ">
+                            <p>MSL put on a dominant display at Arena One on February 9, 2025, thrashing Maps United 10-5 in a thrilling goal fest. Rodgers stole the show with a hat-trick, while Eugene bagged a brace to keep the scoreboard ticking. Lawrence,
+                                aka Maresca, also found the net, with Arnold, Silvena, and Ronny making their presence felt in MSL’s relentless attack. Victor and Micky held things down between the posts, facing waves of pressure. However, Maps United
+                                showed fighting spirit, with Cyrus, Ken, and Simon finding the back of the net, keeping the game exciting. Despite their efforts, MSL’s firepower proved too much, sealing a commanding victory in style.</p>
+                        </div>
+
+                        <div class="more ">
+                            <a class="read-more " href="javascript:void(0); " onclick="toggleReadMore(this) ">
+                                        Read More
+                                        <i class="fas fa-arrow-right button-icon "></i>
+                                    </a>
+                        </div>
+                    </div>
+
+                </div> -->
+                <!-- <div class="blog-post grid " style="visibility: hidden; ">
+                    <img class="blog-img " src="img/maps.JPG " alt=" " onclick="openLightbox(this) ">
+
+                    <div class="blog-info ">
+                        <p class="up-info ">More like Friends</p>
+                        <h3 class="info-title ">The Rivals</h3>
+                        <p class="info-description ">By Admin / February 9<sup>th</sup>, 2025 /</p>
+
+                        <div class="hidden-content ">
+                            <p>MSL put on a dominant display at Arena One on February 9, 2025, thrashing Maps United 10-5 in a thrilling goal fest. Rodgers stole the show with a hat-trick, while Eugene bagged a brace to keep the scoreboard ticking. Lawrence,
+                                aka Maresca, also found the net, with Arnold, Silvena, and Ronny making their presence felt in MSL’s relentless attack. Victor and Micky held things down between the posts, facing waves of pressure. However, Maps United
+                                showed fighting spirit, with Cyrus, Ken, and Simon finding the back of the net, keeping the game exciting. Despite their efforts, MSL’s firepower proved too much, sealing a commanding victory in style.</p>
+                        </div>
+
+                        <div class="more ">
+                            <a class="read-more " href="javascript:void(0); " onclick="toggleReadMore(this) ">
+                                Read More
+                                <i class="fas fa-arrow-right button-icon "></i>
+                            </a>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Lightbox Container -->
+                <div id="lightbox " class="lightbox " onclick="closeLightbox() ">
+                    <img id="lightbox-img " class="lightbox-img ">
+                </div>
+            </div>
+            <!-- <div class="pagination ">
+                <i class="fas fa-chevron-left "></i>
+
+                <span class="current ">1</span> -->
+            <!-- <span>2</span>
+                <span>3</span>
+                <span>&middot; &middot;</span>
+                <span>9</span> -->
+
+            <!-- <i class="fas fa-chevron-right "></i>
+
+    </div> -->
+        </section>
+    </div>
+
+
+    <!-- ################## End blog ################# -->
+
+
+
+
+
+    <!-- ################## START FOOTER ############ -->
+    <footer class="footer section ">
+        <div class="footer-container container grid ">
+            <!-- FOOTER CONTENT 1 -->
+            <div class="footer-content " style="visibility:hidden; ">
+                <a href="index.html " class="footer-logo ">
+                    <img src="imgs/logo.png " class="gh " alt=" " style="height: 35px;width: 35px; border-radius: 50%; ">
+                    <p> GhViƆɔ</p>
+                </a>
+
+                <p class="footer-discription ">Enjoy the biggest sale <br> of your life.</p>
+                <div class="footer-social ">
+                    <a class="footer-social-link " href="https://www.facebook.com/mahmoudhofnyy "><i class="fab fa-facebook "></i></a>
+                    <a class="footer-social-link " href="https://www.instagram.com/mahmoudhofnyy "><i class="fab fa-instagram "></i></a>
+                    <a class="footer-social-link " href="https://www.twitter.com/mahmoudhofnyy "><i class="fab fa-twitter "></i></a>
+                </div>
+            </div>
+            <!-- FOOTER CONTENT 2 -->
+            <div class="footer-content " style="visibility:hidden; ">
+                <h3 class="footer-title ">About</h3>
+                <ul class="footer-links ">
+                    <li><a class="footer-link " href="about.html ">About Us</a></li>
+                    <li><a class="footer-link " href=" ">Customer Support</a></li>
+                    <li><a class="footer-link " href=" ">Support Center</a></li>
+                </ul>
+            </div>
+            <!-- FOOTER CONTENT 3 -->
+            <div class="footer-content " style="visibility:hidden; ">
+                <h3 class="footer-title ">Our Services</h3>
+                <ul class="footer-links ">
+                    <li><a class="footer-link " href=" ">Shop</a></li>
+                    <li><a class="footer-link " href=" ">Discount</a> </li>
+                    <li><a class="footer-link " href=" ">Shipping Mode</a></li>
+                </ul>
+            </div>
+            <!-- FOOTER CONTENT 4 -->
+            <div class="footer-content " style="visibility:hidden; ">
+                <h3 class="footer-title ">Our Company</h3>
+
+                <ul class="footer-links ">
+                    <li><a class="footer-link " href=" ">Register</a></li>
+                    <li><a class="footer-link " href=" ">Contact Us</a></li>
+                    <li><a class="footer-link " href="about.html ">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- <span class="footer-copy ">&#169; <span class="main-color ">GhViƆɔ</span> All Right reserved. </span> -->
+        <span class="footer-copy ">&#169; <span class="main-color ">GhViƆɔ</span> <span id="year "></span> All Right reserved. </span>
+        <script>
+            document.getElementById("year ").textContent = new Date().getFullYear();
+        </script>
+    </footer>
+    <!-- ################## END FOOTER ############ -->
+
+
+    <!-- ################## SCROLL UP ############ -->
+    <a class="scroll-up " id="scroll-up " href="# "><i class="fas fa-arrow-up "></i></a>
+
+    <!-- ################## START STYLE SWITCHER  ############ -->
+
+    <div class="style-switcher ">
+        <div class="style-switcher-toggler s-icon ">
+            <i class="fas fa-cog fa-spin "></i>
+
+        </div>
+        <h4>Theme Colors</h4>
+
+        <div class="themes-colors js-theme-colors">
+            <button type="button " data-js-themes-color="color-1" class="js-theme-color-item themes-button color-1">
+                <i class="fas fa-check"></i>
+            </button>
+            <button type="button " data-js-themes-color="color-2" class="js-theme-color-item themes-button color-2">
+                <i class=" fas fa-check"></i>
+            </button>
+            <button type="button " data-js-themes-color="color-3" class="js-theme-color-item themes-button color-3">
+                <i class="fas fa-check"></i>
+            </button>
+            <!-- <button type="button " data-js-themes-color="color-4" class="js-theme-color-item themes-button color-4">
+                <i class="fas fa-check"></i>
+            </button>
+            <button type="button " data-js-themes-color="color-5" class="js-theme-color-item themes-button color-5">
+                <i class="fas fa-check"></i>
+            </button> -->
+
+            <!-- <button type="button " data-js-themes-color="color-6 " class="js-theme-color-item themes-button color-6 ">
+                <i class="fas fa-check "></i>
+            </button> -->
+
+        </div>
+    </div>
+
+    <!-- ################## END STYLE SWITCHER  ############ -->
+    <!-- Read more sricpt -->
+    <script>
+        //function toggleReadMore(btn) {
+        //let hiddenContent = btn.parentElement.previousElementSibling; // Get the hidden content
+        //let slideshowContainer = document.querySelector(".slideshow-container"); // Get the images section
+
+        //if (hiddenContent.style.display === "none" || hiddenContent.style.display === "") {
+        //hiddenContent.style.display = "block"; // Show story
+        //slideshowContainer.style.display = "none"; // Hide images
+        //btn.innerHTML = 'Read Less <i class="fas fa-arrow-up button-icon"></i>'; // Change button text
+        //} else {
+        //hiddenContent.style.display = "none"; // Hide story
+        //slideshowContainer.style.display = "block"; // Show images
+        //btn.innerHTML = 'Read More <i class="fas fa-arrow-right button-icon"></i>'; // Change button text back
+        //}
+        //}
+        function toggleReadMore(btn) {
+            let blogPost = btn.closest(".blog-post"); // Get the closest blog-post container
+            let hiddenContent = blogPost.querySelector(".hidden-content");
+            let images = blogPost.querySelector(".blog-img");
+
+            if (hiddenContent.style.display === "none" || hiddenContent.style.display === "") {
+                hiddenContent.style.display = "block"; // Show the text
+                blogPost.classList.add("expanded"); // Apply expanded styles
+                btn.innerHTML = "Read Less <i class='fas fa-arrow-left button-icon'></i>"; // Change button text
+            } else {
+                hiddenContent.style.display = "none"; // Hide the text
+                blogPost.classList.remove("expanded"); // Remove expanded styles
+                btn.innerHTML = "Read More <i class='fas fa-arrow-right button-icon'></i>"; // Change button text
+            }
+        }
+    </script>
+    <!-- lightbox -->
+
+    <script src="js/slider.js"></script>
+    <script src="js/dark.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

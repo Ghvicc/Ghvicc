@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhViƆɔ</title>
+    <link rel="icon" type="image/png" href="imgs/logo.png">
+    <!-- Main Templet CSS File  -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" class="js-color-style" href="css/colors/color-2.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Render All Elements Normally  -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <!-- font awsome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/button.css" />
+    <style>
+         :root {
+            --bg-color: #F6E0BC;
+            --text-color: #000000;
+            --title-color: #72797e;
+        }
+        
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #72797e;
+            --title-color: #72797e;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .header {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .mar {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+        }
+        
+        .mar p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 10s linear infinite;
+        }
+        
+        @keyframes mar {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .responsive {
+            width: 50%;
+            /* Responsive width */
+            max-width: 200px;
+            /* Prevents excessive growth */
+            height: auto;
+            /* Maintains aspect ratio */
+            border-radius: 10%;
+            opacity: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            /* Centers on all screen sizes */
+            position: relative;
+        }
+        /* Responsive adjustments for smaller screens */
+        
+        @media (max-width: 768px) {
+            .about-head {
+                width: 100%;
+                /* Increases width on smaller screens */
+                max-width: 150px;
+                /* Adjusts size */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-head {
+                width: 90%;
+                /* Full width on very small screens */
+                max-width: 120px;
+                /* Even smaller size */
+            }
+        }
+        h1, h2, h3 {
+            color: #316131; /* Grinch green */
+            font-size: medium;
+        }
+        p {
+            color: #333;
+            font-size: 15px;
+        }
+        .marquee-container {
+    width: 70%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #F6E0BC; /* Optional background */
+    padding: 5px 0;
+    left: 15%;
+    position: relative;
+}
+
+.marquee {
+    display: flex;
+    animation: scroll 10s linear infinite;
+}
+
+.marquee img {
+    height: 4cm;
+    transition: transform 0.5s ease-in-out;
+}
+
+.marquee img:hover {
+    transform: scale(1.5); /* Expands image on hover */
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+    </style>
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <img src="imgs/logo.png" class="gh" alt="" style="height: 55px;width: 55px; border-radius: 50%;">
+                <p> GhViƆɔ</p>
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-items" id="nav-items">
+                    <li class="item"><a class="nav-link " href="index.html">Home</a></li>
+                    <li class="item"><a class="nav-link active-link" href="about.html">About</a></li>
+                    <li class="item"><a class="nav-link" href="blog.html">Mindful Life</a></li>
+                    <li class="item"><a class="nav-link" href="faq.html">Live It</a></li>
+                    <li class="item"><a class="nav-link" href="activities.html">Make an Impact</a></li>
+                    <li class="item"><a class="nav-link" href="shop.html"> Explore Collection</a></li>
+                    <li class="item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <!-- <button id="theme-toggle" style="background-color: transparent;">Mode </button> -->
+                </ul>
+            </div>
+            <div class="nav-btns">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                  </label>
+                <div class="login-toggle" id="login-toggle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="cart-shop" id="cart-shop">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i id="icon-toggel" class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- #################### CART #################### -->
+    <div class="cart" id="cart">
+        <i class="fas fa-times cart-close" id="cart-close"></i>
+        <h2 class="cart-title">My Cart</h2>
+        <div class="cart-container">
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/h.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Cardigan Hoodie</h3>
+                    <span class="cart-price">$15</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/Jacket2.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Windbreak Hoodie</h3>
+                    <span class="cart-price">$15</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/short.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Short Jeans</h3>
+                    <span class="cart-price">$11</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="cart-prices">
+            <div class="cart-prices-item">3 Items</div>
+            <span class="cart-prices-total">$41</span>
+        </div>
+    </div>
+
+
+    <!-- ################## END CART ################## -->
+
+    <!-- ################# START LOGIN ################ -->
+
+    <div class="login" id="login">
+        <i class="fas fa-times login-close" id="login-close"></i>
+        <h2 class="login-title">LOGIN</h2>
+        <form action="" class="login-form grid">
+            <!-- EMAIL -->
+            <div class="login-content">
+                <label class="login-label" for="">Email</label>
+                <input type="email" class="login-input" id="e-mail">
+            </div>
+            <!-- PASSWORD -->
+            <div class="login-content">
+                <label class="login-label" for="">Password</label>
+                <input type="password" class="login-input" id="pass">
+            </div>
+            <!-- BUTTON -->
+            <div>
+                <a class="login-btn button" href="">Sign In</a>
+            </div>
+            <div>
+                <p class="signup">Not a member?
+                    <a href="regisration.html">SignUp</a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <!-- ################## END LOGIN ################# -->
+
+
+
+
+    <!-- ################## Start About ################# -->
+    <div class="main">
+        <section class="about section container">
+            <!-- <img class="about-img" src="img/abo.png" alt="" style="width:200px; height:250px; border-radius:10%;opacity:100%;align-items: center; position:relative;left:32%;"><br> -->
+            <h1>Embark on a Journey of Intentional Living: Embrace Simplicity, Sustainability, and Inner Peace</h1>
+    <p>In a world that never stops—bursting with noise, distractions, and endless complexity—intentional living offers a serene escape. At GhViƆɔ, we believe that true fulfillment begins when we embrace mindfulness, simplicity, and sustainability. And now, we invite you to be part of a movement that’s reshaping the way we live—whether you're already aligned with these values or are ready to begin the journey.</p>
+    
+    <h2>What is Intentional Living?</h2>
+    <p>Intentional living is the art of slowing down to truly experience life. It’s about being present, making mindful choices, and curating a life that reflects your deepest values. It’s in the way you simplify your space, the choices you make for the planet, and the moments you cherish with loved ones.</p>
+    
+    <h2>Simplicity: The Freedom of Less</h2>
+    <p>In a world overwhelmed by excess—too much noise, too many things, too many distractions—simplicity becomes a powerful act of liberation. It’s not about having less, but about choosing more of what truly nourishes you. At GhViƆɔ, we believe in the profound peace that simplicity brings—when we strip away the unnecessary, we make room for what matters most. Every piece, every decision, is a step towards clarity and calm.</p>
+    
+    <h2>Sustainability: A Commitment to the Future</h2>
+    <p>Living intentionally isn’t just about your peace of mind—it’s about the impact you leave on the world. Sustainability is woven into every choice we make. It’s about creating harmony with the planet—through ethical sourcing, reducing waste, and supporting practices that honor the Earth. Every mindful decision you make sends a ripple of positive change into the world.</p>
+    
+    <h2>Your Invitation to Step into a New Way of Living</h2>
+    <p>We’re inviting you to join us, to be part of a community that chooses to live with purpose. Whether you’re already aligned with simplicity, sustainability, and mindfulness or are just starting to explore these values, there is a place for you. Every small step counts—each decision, each action, builds toward a world of greater balance and beauty.</p>
+    
+    <h2>For Those Ready to Begin Their Journey</h2>
+    <p>If you’re just beginning, start simple. Choose one mindful change—maybe it's reducing plastic, simplifying your wardrobe, or embracing eco-friendly choices. At GhViƆɔ, we’ve designed products that align with your values, making the shift to intentional living easy, beautiful, and fulfilling.</p>
+    
+    <h2>Intentional Living Starts Here</h2>
+    <p>Living intentionally is not about perfection. It’s about presence, about being aware—in every moment, in every choice, in every relationship. It’s about being kind to yourself, to others, and to the Earth. Together, we can create a world that is simpler, more sustainable, and more mindful.</p>
+    
+    <h2>Join the Movement. Make a Difference.</h2>
+    <p>Take the first step toward a life filled with purpose and peace. Make intentional choices, embrace sustainability, and live with simplicity every day. Let’s co-create a world that radiates mindfulness, clarity, and grace. Together, we will transform our lives and our world—one mindful choice at a time.</p>
+       <!-- <h2 class="bearcrumb-title">About Us</h2> -->
+            <!-- <h3 class="bearcrumb-subtitle">Home > <span class="main-color">About Us</span> </h3> -->
+            <!-- <div class="about-container grid"> -->
+
+            <!-- <img class="about-img" src="img/ab.PNG" alt="" style="width:200px; height:250px; border-radius:10%;opacity:80%;"> -->
+            <!-- <div class="about-data"> -->
+            <!-- <div class="about-head" style="align-items: center; position:relative;left:72%; font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"> -->
+            <!-- <div class="responsive-box"> -->
+            <!-- <h2 class="about-title section-title">
+                            who really We Are <br> Why Choose Us
+                        </h2>
+                        <p class="about-main-description">
+                            We have over 3500+ unbaisd reviews and our customers trust our products.
+                        </p>
+                    </div>
+                    <div class="about-details grid">
+                        <p class="about-description">
+                            <i class="fas fa-check-square"></i> We always delivery on time.
+                        </p>
+                        <p class="about-description">
+                            <i class="fas fa-check-square"></i> We give you guides to protect and care for your product.
+                        </p>
+                        <p class="about-description">
+                            <i class="fas fa-check-square"></i> 100% money back Guaranted.
+                        </p> -->
+            <!-- <img class="about-img" src="img/abo.png" alt="" style="width:200px; height:250px; border-radius:10%;opacity:100%;align-items: center; position:relative;left:32%;"><br>
+                        <p>Welcome to GhViƆɔ, where simplicity meets mindfulness, and sustainability is the heart of everything we do.</p>
+                        <p>We believe life should be lived with intention.</p>
+                        <p>In a world that’s constantly moving fast and asking for more, we’re here to help you slow down, reconnect, and find joy in the simple things. </p>
+                        <p>Whether it’s the warmth of a morning sun, the quiet moments of reflection, or the joy of using something designed with care, we’re here to remind you that less truly can be more.</p>
+                        <p>Our brand was born from a passion for mindful living and a deep respect for our planet. </p>
+                        <p>We believe in making choices that matter—not just for today, but for tomorrow. </p>
+                        <p>From sustainably sourced materials to designs that bring calm and clarity, every product we create is a reflection of our commitment to simplicity and purpose.</p>
+                        <p>At GhViƆɔ, we’re not just about products; we’re about creating a lifestyle that supports well-being, encourages mindful living, and inspires a deeper connection with the world around us. </p>
+                        <p>We want to make it easy for you to live a life that’s eco-conscious, intentional, and, most importantly, full of peace.</p>
+                        <p>Join us on this journey toward a simpler, more sustainable, and more meaningful life.</p>
+                        <p>Live simply. Live mindfully. Live beautifully.</p> -->
+            <!-- </div> -->
+            <!-- </div> -->
+
+            <!-- </div> -->
+        </section>
+    </div>
+
+
+    <!-- ################## End about ################# -->
+
+
+    <div class="marquee-container">
+        <div class="marquee">
+            <img src="img/about1.png" alt="Image 1">
+            <!-- <img src="img/about1.png" alt="Image 1"> -->
+            
+            <img src="img/about2.png" alt="Image 2">
+            <!-- <img src="img/about2.png" alt="Image 2"> -->
+            
+            <img src="img/about3.png" alt="Image 3">
+            <!-- <img src="img/about3.png" alt="Image 3"> -->
+           
+            <img src="img/about4.jpg" alt="Image 4">
+            <!-- <img src="img/about4.jpg" alt="Image 4"> -->
+            
+            <!-- <img src="img/about5.jpg" alt="Image 5"> -->
+            <img src="img/about5.jpg" alt="Image 5">
+            
+            <img src="img/about1.png" alt="Image 1">
+            <img src="img/about1.png" alt="Image 1">
+            
+            <img src="img/about2.png" alt="Image 2">
+            <img src="img/about2.png" alt="Image 2">
+            
+            <img src="img/about3.png" alt="Image 3">
+            <img src="img/about3.png" alt="Image 3">
+           
+            <img src="img/about4.jpg" alt="Image 4">
+            <img src="img/about4.jpg" alt="Image 4">
+            
+            <img src="img/about5.jpg" alt="Image 5">
+            <img src="img/about5.jpg" alt="Image 5">
+           
+        </div>
+    </div>
+
+
+    <!-- ################## START FOOTER ############ -->
+    <footer class="footer section">
+        <div class="footer-container container grid">
+            <!-- FOOTER CONTENT 2 -->
+            <div class="footer-content" style="visibility:hidden;">
+                <h3 class="footer-title">About</h3>
+                <ul class="footer-links">
+                    <li><a class="footer-link" href="about.html">About Us</a></li>
+                    <li><a class="footer-link" href="">Customer Support</a></li>
+                    <li><a class="footer-link" href="">Support Center</a></li>
+                </ul>
+            </div>
+            <!-- FOOTER CONTENT 1 -->
+            <div class="footer-content">
+                <a href="index.html" class="footer-logo">
+                    <img src="imgs/logo.png" class="gh" alt="" style="height: 35px;width: 35px; border-radius: 50%;visibility:hidden;">
+                    <p style="visibility:hidden;">GhViƆɔ </p>
+                </a>
+                <!-- <div class="mar">
+                    <p>Simplicity & Sustainability </p>
+                </div> -->
+                <p class="footer-discription " id="demo"></p>
+                <!-- <marquee behavior="" direction="" class="mar">
+                    <p class="footer-discription">Simplicity & Sustainability </p>
+                </marquee> -->
+
+                <!-- <div class="footer-social" style="visibility:hidden;">
+                    <a class="footer-social-link" href="https://www.facebook.com/mahmoudhofnyy"><i class="fab fa-facebook"></i></a>
+                    <a class="footer-social-link" href="https://www.instagram.com/mahmoudhofnyy"><i class="fab fa-instagram"></i></a>
+                    <a class="footer-social-link" href="https://www.twitter.com/mahmoudhofnyy"><i class="fab fa-twitter"></i></a>
+                </div> -->
+            </div>
+
+            <!-- FOOTER CONTENT 3 -->
+            <!-- <div class="footer-content" style="visibility:hidden;">
+                <h3 class="footer-title">Our Services</h3>
+                <ul class="footer-links">
+                    <li><a class="footer-link" href="">Shop</a></li>
+                    <li><a class="footer-link" href="">Discount</a> </li>
+                    <li><a class="footer-link" href="">Shipping Mode</a></li>
+                </ul>
+            </div> -->
+            <!-- FOOTER CONTENT 4 -->
+            <!-- <div class="footer-content" style="visibility:hidden;">
+                <h3 class="footer-title">Our Company</h3>
+
+                <ul class="footer-links">
+                    <li><a class="footer-link" href="">Register</a></li>
+                    <li><a class="footer-link" href="">Contact Us</a></li>
+                    <li><a class="footer-link" href="about.html">About Us</a></li>
+                </ul>
+            </div> -->
+        </div>
+        <!-- <span class="footer-copy">&#169; <span class="main-color">GhViƆɔ</span> All Right reserved. </span> -->
+        <span class="footer-copy">&#169; <span class="main-color">GhViƆɔ</span> <span id="year"></span> All Right reserved. </span>
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+    </footer>
+    <!-- ################## END FOOTER ############ -->
+
+
+    <!-- ################## SCROLL UP ############ -->
+    <a class="scroll-up" id="scroll-up" href="#"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- ################## START STYLE SWITCHER  ############ -->
+
+    <div class="style-switcher ">
+        <div class="style-switcher-toggler s-icon ">
+            <i class="fas fa-cog fa-spin "></i>
+
+        </div>
+        <h4>Theme Colors</h4>
+
+        <div class="themes-colors js-theme-colors">
+            <button type="button " data-js-themes-color="color-1" class="js-theme-color-item themes-button color-1">
+            <i class="fas fa-check"></i>
+        </button>
+            <button type="button " data-js-themes-color="color-2" class="js-theme-color-item themes-button color-2">
+            <i class=" fas fa-check"></i>
+        </button>
+            <button type="button " data-js-themes-color="color-3" class="js-theme-color-item themes-button color-3">
+            <i class="fas fa-check"></i>
+        </button>
+            <!-- <button type="button " data-js-themes-color="color-4" class="js-theme-color-item themes-button color-4">
+            <i class="fas fa-check"></i>
+        </button>
+        <button type="button " data-js-themes-color="color-5" class="js-theme-color-item themes-button color-5">
+            <i class="fas fa-check"></i>
+        </button> -->
+
+            <!-- <button type="button " data-js-themes-color="color-6 " class="js-theme-color-item themes-button color-6 ">
+            <i class="fas fa-check "></i>
+        </button> -->
+
+        </div>
+    </div>
+
+    <!-- ################## END STYLE SWITCHER  ############ -->
+    <!-- autotypying script -->
+    <script>
+        const text = "Simplicity & Sustainability.";
+        let index = 0;
+        const speed = 100; // Typing speed in ms
+        const delayBeforeRestart = 1500; // Wait time before restarting
+
+        function type() {
+            if (index < text.length) {
+                document.getElementById("demo").textContent += text.charAt(index);
+                index++;
+                setTimeout(type, speed);
+            } else {
+                setTimeout(() => {
+                    document.getElementById("demo").textContent = " "; // Clear text
+                    index = 0; // Reset index
+                    type(); // Restart typing
+                }, delayBeforeRestart);
+            }
+        }
+
+        window.onload = type;
+    </script>
+    <script src="js/dark.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

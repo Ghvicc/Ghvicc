@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GhViƆɔ</title>
+    <link rel="icon" type="image/png" href="imgs/logo.png">
+    <!-- Main Templet CSS File  -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" class="js-color-style" href="css/colors/color-2.css" />
+    <!-- Render All Elements Normally  -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <!-- font awsome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/button.css" />
+    <style>
+         :root {
+            --bg-color: #F6E0BC;
+            --text-color: #000000;
+            --title-color: #72797e;
+        }
+        
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #72797e;
+            --title-color: #72797e;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .header {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+        /* Default Light Mode Styles */
+        
+        .questions-item {
+            background: #ffffff;
+            /* Light mode background */
+            color: #000000;
+            /* Light mode text color */
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        .questions-header {
+            background: #ffffff;
+            /* Light mode background */
+            color: #000000;
+            /* Light mode text color */
+            transition: background 0.3s, color 0.3s;
+        }
+        /* Dark Mode Styles */
+        
+        .dark-mode .questions-header {
+            background: #222222;
+            /* Dark mode background */
+            color: #ffffff;
+            /* Dark mode text color */
+        }
+        
+        .dark-mode .questions-item {
+            background: #222222;
+            /* Dark mode background */
+            color: #ffffff;
+            /* Dark mode text color */
+        }
+        /* Ensure links and buttons are visible in dark mode */
+        
+        .dark-mode .read-more {
+            color: #00bcd4;
+            /* Light blue for contrast */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <img src="imgs/logo.png" class="gh" alt="" style="height: 55px;width: 55px; border-radius: 50%;">
+                <p> GhViƆɔ</p>
+            </a>
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-items" id="nav-items">
+                    <li class="item"><a class="nav-link " href="index.html">Home</a></li>
+                    <li class="item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="item"><a class="nav-link" href="blog.html">Mindful Life</a></li>
+                    <li class="item"><a class="nav-link active-link" href="faq.html">Live It</a></li>
+                    <li class="item"><a class="nav-link" href="activities.html">Make an Impact</a></li>
+                    <li class="item"><a class="nav-link" href="shop.html"> Explore Collection</a></li>
+                    <li class="item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <!-- <button id="theme-toggle" style="background-color: transparent;">Mode </button> -->
+                </ul>
+            </div>
+            <div class="nav-btns">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                  </label>
+                <div class="login-toggle" id="login-toggle">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="cart-shop" id="cart-shop">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i id="icon-toggel" class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- #################### CART #################### -->
+    <div class="cart" id="cart">
+        <i class="fas fa-times cart-close" id="cart-close"></i>
+        <h2 class="cart-title">My Cart</h2>
+        <div class="cart-container">
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/h.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Cardigan Hoodie</h3>
+                    <span class="cart-price">$15</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/Jacket2.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Windbreak Hoodie</h3>
+                    <span class="cart-price">$15</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+            <article class="cart-card">
+                <div class="cart-box">
+                    <img class="cart-img" src="imgs/short.png" alt="">
+                </div>
+                <div class="cart-details">
+                    <h3 class="cart-title-center">Short Jeans</h3>
+                    <span class="cart-price">$11</span>
+                    <div class="cart-amount">
+                        <div class="cart-amount-content">
+                            <span class="cart-amount-box">
+                                <i class="fas fa-minus"></i>
+                            </span>
+                            <span class="card-amount-number">1</span>
+                            <span class="cart-amount-box">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                        </div>
+                        <i class="fas fa-trash cart-amount-trash"></i>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div class="cart-prices">
+            <div class="cart-prices-item">3 Items</div>
+            <span class="cart-prices-total">$41</span>
+        </div>
+    </div>
+
+
+    <!-- ################## END CART ################## -->
+
+    <!-- ################# START LOGIN ################ -->
+
+    <div class="login" id="login">
+        <i class="fas fa-times login-close" id="login-close"></i>
+        <h2 class="login-title">LOGIN</h2>
+        <form action="" class="login-form grid">
+            <!-- EMAIL -->
+            <div class="login-content">
+                <label class="login-label" for="">Email</label>
+                <input type="email" class="login-input" id="e-mail">
+            </div>
+            <!-- PASSWORD -->
+            <div class="login-content">
+                <label class="login-label" for="">Password</label>
+                <input type="password" class="login-input" id="pass">
+            </div>
+            <!-- BUTTON -->
+            <div>
+                <a class="login-btn button" href="">Sign In</a>
+            </div>
+            <div>
+                <p class="signup">Not a member?
+                    <a href="regisration.html">SignUp</a>
+                </p>
+            </div>
+        </form>
+    </div>
+
+    <!-- ################## END LOGIN ################# -->
+
+
+
+
+    <!-- ################## Start faq ################# -->
+    <div class="main">
+        <section class="questions section container">
+            <!-- <h2 class="bearcrumb-title">FAQ'S Page</h2>
+            <h3 class="bearcrumb-subtitle">Home > <span class="main-color">FAQ'S</span> </h3> -->
+            <div class="questions-container grid">
+                <!-- group 1 -->
+                <div class="questions-group">
+                    <!-- 1 -->
+                    <div class="questions-item">
+                        <div class="questions-header">
+                            <i id="question-icon" class="fas fa-plus"></i>
+                            <h3 class="questions-item-title">The Web Whisperer</h3>
+                        </div>
+                        <div class="questions-content">
+                            <p class="questions-discription">
+                                <!-- <h1>Meet Kelvin A Shisanya</h1> -->
+                                
+                                <p style="font-size: medium;">Imagine a web developer who blends creativity with precision, turning ideas into digital art. Meet <strong>Kelvin A Shisanya</strong>, the magician behind our website—a UI/UX master who brought our online presence to life. If our website were a canvas, Kelvin would be the artist, the brush, and the paint.</p>
+                                <br>
+                                <h2 style="font-size: large;">The Human Element: More Than Just Code</h2>
+                                <p style="font-size: medium;">What sets Kelvin apart is his ability to focus on the human experience behind every design. A website isn’t just pages—it’s an experience that begins the moment you land and continues with each click. Kelvin believes design is about authenticity, not just aesthetics, making sure everything works and feels good.</p>
+                                <br>
+                                <h2 style="font-size: large;">Behind the Code: A Champion of Our Values</h2>
+                                <p style="font-size: medium;">Kelvin shares our commitment to mindfulness, simplicity, and sustainability. These values guide every decision he makes, creating a site that allows our community to connect and engage intentionally. He reduces clutter to let visitors focus on what matters most—the experience.</p>
+                                <br>
+                                <h2 style="font-size: large;">More Than a Developer—A True Brand Champion</h2>
+                                <p style="font-size: medium;">Kelvin isn’t just our web wizard; he’s one of our biggest advocates. He ensures our website isn’t just functional but embodies our brand’s core values, creating a space for like-minded individuals to connect while championing simplicity and sustainability.</p>
+                                <br>
+                                <blockquote>
+                                    <i>"For me, creating this website was more than just building something functional. It was about crafting an experience that reflects our values, ensuring visitors feel good about being here."</i>
+                                     – <strong>Kelvin A Shisanya</strong>
+                               </blockquote>
+                               <br> <p style="left: 10%;position: relative;"><img src="img/a.jpg" alt="a.jpg" srcset="" style="border-radius: 50%;width: 500px;height: 500px;"></p>
+                                <p style="font-size: medium;">Explore Kelvin’s work and journey on his portfolio: <a href="https://kelvo1999.github.io/Portfolio/" target="_blank">Kelvin A Shisanya's Portfolio</a></p>
+                                                        </p>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="questions-item">
+                        <div class="questions-header">
+                            <i id="question-icon" class="fas fa-plus"></i>
+                            <h3 class="questions-item-title">Lorem ipsum dolor sit amet.</h3>
+                        </div>
+                        <div class="questions-content">
+                            <p class="questions-discription">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa consequatur culpa modi. Adipisci debitis numquam voluptatum eum accusamus delectus natus, distinctio pariatur rem placeat animi consequatur, necessitatibus sunt dignissimos minus?
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="questions-item">
+                        <div class="questions-header">
+                            <i id="question-icon" class="fas fa-plus"></i>
+                            <h3 class="questions-item-title">Lorem ipsum dolor sit amet.</h3>
+                        </div>
+                        <div class="questions-content">
+                            <p class="questions-discription">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa consequatur culpa modi. Adipisci debitis numquam voluptatum eum accusamus delectus natus, distinctio pariatur rem placeat animi consequatur, necessitatibus sunt dignissimos minus?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- group 2 -->
+                <div class="questions-group">
+                    <!-- 1 -->
+                    <div class="questions-item">
+                        <div class="questions-header">
+                            <i id="question-icon" class="fas fa-plus"></i>
+                            <h3 class="questions-item-title">Lorem ipsum dolor sit amet.</h3>
+                        </div>
+                        <div class="questions-content">
+                            <p class="questions-discription">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa consequatur culpa modi. Adipisci debitis numquam voluptatum eum accusamus delectus natus, distinctio pariatur rem placeat animi consequatur, necessitatibus sunt dignissimos minus?
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 2 -->
+                    <div class="questions-item">
+                        <div class="questions-header">
+                            <i id="question-icon" class="fas fa-plus"></i>
+                            <h3 class="questions-item-title">Lorem ipsum dolor sit amet.</h3>
+                        </div>
+                        <div class="questions-content">
+                            <p class="questions-discription">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa consequatur culpa modi. Adipisci debitis numquam voluptatum eum accusamus delectus natus, distinctio pariatur rem placeat animi consequatur, necessitatibus sunt dignissimos minus?
+                            </p>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="questions-item">
+                        <div class="questions-header">
+                            <i id="question-icon" class="fas fa-plus"></i>
+                            <h3 class="questions-item-title">Lorem ipsum dolor sit amet.</h3>
+                        </div>
+                        <div class="questions-content">
+                            <p class="questions-discription">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa consequatur culpa modi. Adipisci debitis numquam voluptatum eum accusamus delectus natus, distinctio pariatur rem placeat animi consequatur, necessitatibus sunt dignissimos minus?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <!-- ################## End faq ################# -->
+
+
+
+
+
+    <!-- ################## START FOOTER ############ -->
+    <footer class="footer section">
+        <div class="footer-container container grid">
+            <!-- FOOTER CONTENT 1 -->
+            <div class="footer-content" style="visibility:hidden;">
+                <a href="index.html" class="footer-logo">
+                    <!-- <i class="fas fa-box footer-logo-icon"></i> -->
+                    <img src="imgs/logo.png" class="gh" alt="" style="height: 35px;width: 35px; border-radius: 50%;">
+                    <p> GhViƆɔ</p>
+                </a>
+
+                <p class="footer-discription">Enjoy the biggest sale <br> of your life.</p>
+                <div class="footer-social">
+                    <a class="footer-social-link" href="https://www.facebook.com/mahmoudhofnyy"><i class="fab fa-facebook"></i></a>
+                    <a class="footer-social-link" href="https://www.instagram.com/mahmoudhofnyy"><i class="fab fa-instagram"></i></a>
+                    <a class="footer-social-link" href="https://www.twitter.com/mahmoudhofnyy"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <!-- FOOTER CONTENT 2 -->
+            <div class="footer-content" style="visibility:hidden;">
+                <h3 class="footer-title">About</h3>
+                <ul class="footer-links">
+                    <li><a class="footer-link" href="about.html">About Us</a></li>
+                    <li><a class="footer-link" href="">Customer Support</a></li>
+                    <li><a class="footer-link" href="">Support Center</a></li>
+                </ul>
+            </div>
+            <!-- FOOTER CONTENT 3 -->
+            <div class="footer-content" style="visibility:hidden;">
+                <h3 class="footer-title">Our Services</h3>
+                <ul class="footer-links">
+                    <li><a class="footer-link" href="">Shop</a></li>
+                    <li><a class="footer-link" href="">Discount</a> </li>
+                    <li><a class="footer-link" href="">Shipping Mode</a></li>
+                </ul>
+            </div>
+            <!-- FOOTER CONTENT 4 -->
+            <div class="footer-content" style="visibility:hidden;">
+                <h3 class="footer-title">Our Company</h3>
+
+                <ul class="footer-links">
+                    <li><a class="footer-link" href="">Register</a></li>
+                    <li><a class="footer-link" href="">Contact Us</a></li>
+                    <li><a class="footer-link" href="about.html">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- <span class="footer-copy">&#169; <span class="main-color">Mahmoud Hofny</span> All Right reserved, form Crypticalcoder </span> -->
+        <span class="footer-copy">&#169; <span class="main-color">GhViƆɔ</span> <span id="year"></span> All Right reserved. </span>
+        <script>
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
+    </footer>
+    <!-- ################## END FOOTER ############ -->
+
+
+    <!-- ################## SCROLL UP ############ -->
+    <a class="scroll-up" id="scroll-up" href="#"><i class="fas fa-arrow-up"></i></a>
+    <!-- ################## START STYLE SWITCHER  ############ -->
+
+    <div class="style-switcher ">
+        <div class="style-switcher-toggler s-icon ">
+            <i class="fas fa-cog fa-spin "></i>
+
+        </div>
+        <h4>Theme Colors</h4>
+
+        <div class="themes-colors js-theme-colors">
+            <button type="button " data-js-themes-color="color-1" class="js-theme-color-item themes-button color-1">
+            <i class="fas fa-check"></i>
+        </button>
+            <button type="button " data-js-themes-color="color-2" class="js-theme-color-item themes-button color-2">
+            <i class=" fas fa-check"></i>
+        </button>
+            <button type="button " data-js-themes-color="color-3" class="js-theme-color-item themes-button color-3">
+            <i class="fas fa-check"></i>
+        </button>
+            <!-- <button type="button " data-js-themes-color="color-4" class="js-theme-color-item themes-button color-4">
+            <i class="fas fa-check"></i>
+        </button>
+        <button type="button " data-js-themes-color="color-5" class="js-theme-color-item themes-button color-5">
+            <i class="fas fa-check"></i>
+        </button> -->
+
+            <!-- <button type="button " data-js-themes-color="color-6 " class="js-theme-color-item themes-button color-6 ">
+            <i class="fas fa-check "></i>
+        </button> -->
+
+        </div>
+    </div>
+
+    <!-- ################## END STYLE SWITCHER  ############ -->
+    <script src="js/dark.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
