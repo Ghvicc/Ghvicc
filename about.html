@@ -138,6 +138,24 @@
         transform: translateX(-50%);
     }
 }
+.ele img {
+    position: relative; /* Use absolute positioning for better centering */
+    top: 0%;           /* Vertically center */
+    left: 50%;          /* Horizontally center */
+    transform: translate(-50%, -30%); /* Adjust for exact centering */
+    max-width: 100%;    /* Make sure the image doesn't overflow */
+    height: auto;       /* Maintain aspect ratio */
+}
+
+@media screen and (max-width: 768px) { /* Adjust for smaller screens like tablets or phones */
+    .ele img {
+        width: 90%;  /* Reduce size on smaller screens */
+        left: 50%;   /* Keep horizontally centered */
+        top: 50%;    /* Keep vertically centered */
+        transform: translate(-50%, -30%); /* Keep the image perfectly centered */
+    }
+}
+
 
     </style>
     </style>
@@ -294,30 +312,19 @@
     <div class="main">
         <section class="about section container">
             <!-- <img class="about-img" src="img/abo.png" alt="" style="width:200px; height:250px; border-radius:10%;opacity:100%;align-items: center; position:relative;left:32%;"><br> -->
-            <h1>Embark on a Journey of Intentional Living: Embrace Simplicity, Sustainability, and Inner Peace</h1>
-    <p>In a world that never stops—bursting with noise, distractions, and endless complexity—intentional living offers a serene escape. At GhViƆɔ, we believe that true fulfillment begins when we embrace mindfulness, simplicity, and sustainability. And now, we invite you to be part of a movement that’s reshaping the way we live—whether you're already aligned with these values or are ready to begin the journey.</p>
-    
-    <h2>What is Intentional Living?</h2>
-    <p>Intentional living is the art of slowing down to truly experience life. It’s about being present, making mindful choices, and curating a life that reflects your deepest values. It’s in the way you simplify your space, the choices you make for the planet, and the moments you cherish with loved ones.</p>
-    
-    <h2>Simplicity: The Freedom of Less</h2>
-    <p>In a world overwhelmed by excess—too much noise, too many things, too many distractions—simplicity becomes a powerful act of liberation. It’s not about having less, but about choosing more of what truly nourishes you. At GhViƆɔ, we believe in the profound peace that simplicity brings—when we strip away the unnecessary, we make room for what matters most. Every piece, every decision, is a step towards clarity and calm.</p>
-    
-    <h2>Sustainability: A Commitment to the Future</h2>
-    <p>Living intentionally isn’t just about your peace of mind—it’s about the impact you leave on the world. Sustainability is woven into every choice we make. It’s about creating harmony with the planet—through ethical sourcing, reducing waste, and supporting practices that honor the Earth. Every mindful decision you make sends a ripple of positive change into the world.</p>
-    
-    <h2>Your Invitation to Step into a New Way of Living</h2>
-    <p>We’re inviting you to join us, to be part of a community that chooses to live with purpose. Whether you’re already aligned with simplicity, sustainability, and mindfulness or are just starting to explore these values, there is a place for you. Every small step counts—each decision, each action, builds toward a world of greater balance and beauty.</p>
-    
-    <h2>For Those Ready to Begin Their Journey</h2>
-    <p>If you’re just beginning, start simple. Choose one mindful change—maybe it's reducing plastic, simplifying your wardrobe, or embracing eco-friendly choices. At GhViƆɔ, we’ve designed products that align with your values, making the shift to intentional living easy, beautiful, and fulfilling.</p>
-    
-    <h2>Intentional Living Starts Here</h2>
-    <p>Living intentionally is not about perfection. It’s about presence, about being aware—in every moment, in every choice, in every relationship. It’s about being kind to yourself, to others, and to the Earth. Together, we can create a world that is simpler, more sustainable, and more mindful.</p>
-    
-    <h2>Join the Movement. Make a Difference.</h2>
-    <p>Take the first step toward a life filled with purpose and peace. Make intentional choices, embrace sustainability, and live with simplicity every day. Let’s co-create a world that radiates mindfulness, clarity, and grace. Together, we will transform our lives and our world—one mindful choice at a time.</p>
-       <!-- <h2 class="bearcrumb-title">About Us</h2> -->
+            <h1>GhViƆɔ – The Quiet Luxury of Intentional Living</h1>
+
+    <p class="intro">In a world of acceleration, <strong>GhViƆɔ</strong> is a call to stillness.</p>
+
+    <p>Rooted in East African philosophy and global sustainability, we craft timeless garments and everyday essentials for those who choose to live deliberately. Every thread, silhouette, and decision honors a slower rhythm—where elegance is found in restraint, and value is measured not in trends, but in intention.</p>
+
+    <p>We believe simplicity is not a lack, but a luxury: the rare ability to focus only on what truly matters. Sustainability is not a feature—it is a standard. And mindfulness is not an ideal—it is the practice of being fully alive.</p>
+
+    <p><strong>GhViƆɔ</strong> is more than a brand—it is a movement. A return to clarity, to conscious presence, to beauty that whispers instead of shouts.</p>
+
+    <p>For those who seek <strong>peace</strong> over noise, <strong>purpose</strong> over excess, and <strong>meaning</strong> over material.</p>
+
+    <p>Welcome to intentional living—designed, not consumed.</p><!-- <h2 class="bearcrumb-title">About Us</h2> -->
             <!-- <h3 class="bearcrumb-subtitle">Home > <span class="main-color">About Us</span> </h3> -->
             <!-- <div class="about-container grid"> -->
 
@@ -365,24 +372,24 @@
     <!-- ################## End about ################# -->
 
 
-    <div class="marquee-container">
-        <div class="marquee">
-            <img src="img/about1.png" alt="Image 1">
+    <!-- <div class="marquee-container"> -->
+        <!-- <div class="marquee"> -->
+            <!-- <img src="img/about1.png" alt="Image 1"> -->
             <!-- <img src="img/about1.png" alt="Image 1"> -->
             
-            <img src="img/about2.png" alt="Image 2">
+            <!-- <img src="img/about2.png" alt="Image 2"> -->
             <!-- <img src="img/about2.png" alt="Image 2"> -->
             
-            <img src="img/about3.png" alt="Image 3">
+            <!-- <img src="img/about3.png" alt="Image 3"> -->
             <!-- <img src="img/about3.png" alt="Image 3"> -->
            
-            <img src="img/about4.jpg" alt="Image 4">
+            <!-- <img src="img/about4.jpg" alt="Image 4"> -->
             <!-- <img src="img/about4.jpg" alt="Image 4"> -->
             
             <!-- <img src="img/about5.jpg" alt="Image 5"> -->
-            <img src="img/about5.jpg" alt="Image 5">
+            <!-- <img src="img/about5.jpg" alt="Image 5"> -->
             
-            <img src="img/about1.png" alt="Image 1">
+            <!-- <img src="img/about1.png" alt="Image 1">
             <img src="img/about1.png" alt="Image 1">
             
             <img src="img/about2.png" alt="Image 2">
@@ -398,6 +405,10 @@
             <img src="img/about5.jpg" alt="Image 5">
            
         </div>
+    </div> -->
+    <br><br><br><br>
+    <div class="ele">
+        <img src="img/ele_3.png" alt="" srcset="">
     </div>
 
 
@@ -405,20 +416,20 @@
     <footer class="footer section">
         <div class="footer-container container grid">
             <!-- FOOTER CONTENT 2 -->
-            <div class="footer-content" style="visibility:hidden;">
+            <!-- <div class="footer-content" style="visibility:hidden;">
                 <h3 class="footer-title">About</h3>
                 <ul class="footer-links">
                     <li><a class="footer-link" href="about.html">About Us</a></li>
                     <li><a class="footer-link" href="">Customer Support</a></li>
                     <li><a class="footer-link" href="">Support Center</a></li>
                 </ul>
-            </div>
+            </div> -->
             <!-- FOOTER CONTENT 1 -->
-            <div class="footer-content">
+            <!-- <div class="footer-content">
                 <a href="index.html" class="footer-logo">
                     <img src="imgs/logo.png" class="gh" alt="" style="height: 35px;width: 35px; border-radius: 50%;visibility:hidden;">
                     <p style="visibility:hidden;">GhViƆɔ </p>
-                </a>
+                </a> -->
                 <!-- <div class="mar">
                     <p>Simplicity & Sustainability </p>
                 </div> -->

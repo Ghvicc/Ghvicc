@@ -869,10 +869,15 @@
         }
         
         .accordion-open .questions-header,
-        .accordion-open .questions-content {
+        .accordion-open  {
             background-color: var(--first-color);
         }
         
+        /* .accordion-open .questions-header,
+        .accordion-open .questions-content {
+            background-color: var(--first-color);
+        }
+         */
         .accordion-open .questions-item-title,
         .accordion-open .questions-discription,
         .accordion-open .questions-header i {
